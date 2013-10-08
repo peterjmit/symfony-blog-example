@@ -1,0 +1,68 @@
+{
+  "sources": {
+    "apple-blog": {
+      "path": "."
+    },
+    "dotdeb": {
+      "locked_version": "0.1.2",
+      "git": "git://github.com/peterjmit/chef-dotdeb.git",
+      "ref": "2cf428a20d91f423d11195ed656d018e4c3c0098"
+    },
+    "php-fpm": {
+      "locked_version": "0.1.2",
+      "git": "git://github.com/peterjmit/chef-php-fpm.git",
+      "ref": "b7a48b2c60778db0e40f325c149b545e63a84fd7"
+    },
+    "users": {
+      "locked_version": "1.5.0"
+    },
+    "sudo": {
+      "locked_version": "2.1.4"
+    },
+    "apt": {
+      "locked_version": "2.0.0"
+    },
+    "git": {
+      "locked_version": "2.5.2"
+    },
+    "dmg": {
+      "locked_version": "1.1.0"
+    },
+    "build-essential": {
+      "locked_version": "1.4.0"
+    },
+    "yum": {
+      "locked_version": "2.3.0"
+    },
+    "windows": {
+      "locked_version": "1.10.0"
+    },
+    "chef_handler": {
+      "locked_version": "1.1.4"
+    },
+    "runit": {
+      "locked_version": "1.1.6"
+    },
+    "vim": {
+      "locked_version": "1.0.2"
+    },
+    "nginx": {
+      "locked_version": "1.7.0"
+    },
+    "ohai": {
+      "locked_version": "1.1.10"
+    },
+    "php": {
+      "locked_version": "1.2.2"
+    },
+    "xml": {
+      "locked_version": "1.1.2"
+    },
+    "mysql": {
+      "locked_version": "3.0.2"
+    },
+    "openssl": {
+      "locked_version": "1.0.2"
+    }
+  }
+}

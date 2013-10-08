@@ -1,0 +1,6 @@
+site :opscode
+
+metadata
+
+cookbook "dotdeb", github: "peterjmit/chef-dotdeb"
+cookbook "php-fpm", github: "peterjmit/chef-php-fpm", ref: "0.1.2"

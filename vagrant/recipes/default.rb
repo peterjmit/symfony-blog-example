@@ -1,0 +1,5 @@
+include_recipe 'apple-blog::base'
+include_recipe 'apple-blog::database'
+include_recipe 'apple-blog::redis'
+include_recipe 'apple-blog::app'
+include_recipe 'apple-blog::blog'
