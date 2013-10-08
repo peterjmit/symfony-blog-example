@@ -10,7 +10,7 @@ parameters:
 
 services:
     peterjmit_blog.blog_repository:
-        class: %peterjmit_blog.blog_controller.class%
+        class: %peterjmit_blog.post_repository.class%
         factory_service: doctrine.orm.default_entity_manager
         factory_method: getRepository
         arguments: [%peterjmit_blog.post_entity.class%]
