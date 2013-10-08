@@ -4,6 +4,7 @@
 
 ## Getting up and running
 
+### Dev environment
 I have supplied a Vagrant file for setting up a dev environment
 on a debian wheezy virtualbox. It requires the the Berkshelf gem
 and vagrant-berkshelf plugin to be installed (as well as vagrant
@@ -28,6 +29,20 @@ and password "rootpass" (configured in the Vagrantfile)
 ```bash
 $ cd vagrant/ && vagrant ssh
 $ cd /var/www/blog
+```
+
+### Asset management
+There is one front-end dependency, twitter bootstrap and it is pulled in with
+the [bower package manager](https://github.com/bower/bower). Bower & bootstrap
+
+```
+$ npm install -g bower
+$ cd <path-to-repository-root>/web
+$ bower install
+```
+
+### Prime the app
+```
 $ composer install
 $ php app/console doctrine:database:create
 $ php app/console doctrine:migrations:migrate
@@ -36,7 +51,7 @@ $ php app/console assets:install
 $ php app/console assetic:dump --env="prod"
 ```
 
-You can run the test scripts
+### Run the test scripts
 
 ```bash
 $ app/console doctrine:database:create --env="test"
@@ -45,10 +60,7 @@ $ bin/behat
 $ bin/phpspec run
 ```
 
-Or just use the app <http://33.33.33.10>
-
-I would usually HTML5 validation on, but I have turned it off to show the Symfony
-validation framework in action.
+Or just use the app <http://33.33.33.10> (if using vagrant)
 
 Lastly you can configure the blog title and name:
 
