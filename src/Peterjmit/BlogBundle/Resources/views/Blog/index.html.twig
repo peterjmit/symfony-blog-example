@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<p>
+  <a href="{{ path('peterjmit_blog_new') }}">Create post</a>
+</p>
 <ul>
   {% for post in posts %}
   <li>#{{ post.id }} - {{ post.subject }}</li>

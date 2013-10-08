@@ -2,6 +2,10 @@ parameters:
     peterjmit_blog.post_entity.class: Peterjmit\BlogBundle\Entity\Post
     peterjmit_blog.post_repository.class: Peterjmit\BlogBundle\Doctrine\PostRepository
     peterjmit_blog.blog_controller.class: Peterjmit\BlogBundle\Controller\BlogController
+    peterjmit.form.type.post.class: Peterjmit\BlogBundle\Form\Type\PostType
+    peterjmit_blog.post_controller.class: Peterjmit\BlogBundle\Controller\PostController
+    peterjmit_blog.post_manager.class: Peterjmit\BlogBundle\Doctrine\PostManager
+    peterjmit_blog.controller_utilities.class: Peterjmit\BlogBundle\Util\ControllerUtilities
 
 services:
     peterjmit_blog.blog_repository:
@@ -10,6 +14,24 @@ services:
         factory_method: getRepository
         arguments: [%peterjmit_blog.post_entity.class%]
 
+    peterjmit_blog.post_manager:
+        class: %peterjmit_blog.post_manager.class%
+        arguments: [@doctrine.orm.entity_manager, %peterjmit_blog.post_entity.class%]
+
+    peterjmit_blog.controller_utilities:
+        class: %peterjmit_blog.controller_utilities.class%
+        arguments: [@router, @templating, @form.factory]
+
     peterjmit_blog.blog_controller:
         class: %peterjmit_blog.blog_controller.class%
         arguments: [@peterjmit_blog.blog_repository, @templating]
+
+    peterjmit.form.type.post:
+        class: %peterjmit.form.type.post.class%
+        arguments: [%peterjmit_blog.post_entity.class%]
+        tags:
+            - { name: form.type, alias: peterjmit_post }
+
+    peterjmit_blog.post_controller:
+        class: %peterjmit_blog.post_controller.class%
+        arguments: [@peterjmit_blog.post_manager, @peterjmit_blog.controller_utilities]

@@ -4,3 +4,6 @@ _blog_bundle_security:
 
 _blog_bundle_reading:
     resource: "@PeterjmitBlogBundle/Resources/config/routing/reading.yml"
+
+_blog_bundle_post:
+    resource: "@PeterjmitBlogBundle/Resources/config/routing/post.yml"

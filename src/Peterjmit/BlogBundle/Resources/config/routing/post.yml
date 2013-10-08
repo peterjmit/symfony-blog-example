@@ -1,0 +1,8 @@
+peterjmit_blog_new:
+    pattern:   /new
+    defaults:  { _controller: peterjmit_blog.post_controller:newAction }
+
+peterjmit_blog_create:
+    pattern:   /create
+    defaults:  { _controller: peterjmit_blog.post_controller:createAction }
+    methods: [POST]
