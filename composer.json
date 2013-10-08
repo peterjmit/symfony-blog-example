@@ -20,8 +20,7 @@
         "sensio/generator-bundle": "2.3.*",
         "incenteev/composer-parameter-handler": "~2.0",
         "stof/doctrine-extensions-bundle": "~1.1",
-        "doctrine/doctrine-migrations-bundle": "*",
-        "doctrine/doctrine-fixtures-bundle": "~2.2",
+        "doctrine/doctrine-migrations-bundle": "dev-master",
         "ircmaxell/password-compat": "~1.0"
     },
     "require-dev": {

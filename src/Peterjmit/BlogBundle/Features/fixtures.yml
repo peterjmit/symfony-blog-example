@@ -1,6 +1,7 @@
 Peterjmit\BlogBundle\Entity\Post:
     post1:
         subject: Awesome blog post 1
-        article: Blaaaaggh
+        article: Article body
     post2:
         subject: How-to: write a blog post for apple
+        article: Article body

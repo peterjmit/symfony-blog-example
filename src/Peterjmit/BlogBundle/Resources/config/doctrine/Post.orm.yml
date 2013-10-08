@@ -1,0 +1,29 @@
+Peterjmit\BlogBundle\Entity\Post:
+    type: entity
+
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+
+    fields:
+        subject:
+            type: string
+        article:
+            type: text
+        published:
+            type: boolean
+        datePublished:
+            type: datetime
+            nullable: true
+        slug:
+            type: string
+            gedmo:
+                slug:
+                    fields:
+                        - subject
+        updated:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update

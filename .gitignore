@@ -10,3 +10,4 @@
 /bin/
 /composer.phar
 /vagrant/.vagrant
+/app/SymfonyRequirements.php
