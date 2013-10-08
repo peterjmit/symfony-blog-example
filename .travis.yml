@@ -4,10 +4,18 @@ php:
   - 5.4
   - 5.5
 
+services:
+    - redis
+    - mysql
+
 before_script:
+    - cp app/config/parameters.yml.dist app/config/parameters.yml
     - composer self-update
     - composer install --dev --no-interaction --prefer-source
+    - app/console doctrine:database:create --env=test --no-interaction --quiet
+    - app/console doctrine:migrations:migrate --env=test --no-interaction --quiet
+    - app/console cache:warmup --env=test --quiet
 
 script:
-    # - ./bin/behat  --no-snippets --no-paths --verbose
     - ./bin/phpspec run -fpretty --verbose
+    - ./bin/behat  --no-snippets --no-paths --verbose
