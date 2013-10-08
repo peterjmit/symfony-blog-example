@@ -1,0 +1,14 @@
+default:
+    formatter:
+        name: progress
+    extensions:
+        Behat\Symfony2Extension\Extension:
+            mink_driver: true
+            kernel:
+                env: test
+                debug: true
+            bundle: PeterjmitBlogBundle
+
+        Behat\MinkExtension\Extension:
+            default_session: 'symfony2'
+            goutte: ~
