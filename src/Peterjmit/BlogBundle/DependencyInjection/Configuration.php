@@ -28,6 +28,10 @@ class Configuration implements ConfigurationInterface
                     ->defaultValue('Welcome to the Apple Blog!')
                     ->cannotBeEmpty()
                 ->end()
+                ->integerNode('posts_per_page')
+                    ->defaultValue(5)
+                    ->cannotBeEmpty()
+                ->end()
             ->end()
         ;
 

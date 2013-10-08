@@ -68,6 +68,7 @@ Lastly you can configure the blog title and name:
 peterjmit_blog:
     name: Pete's blog
     title: Welcome to Pete's blog!
+    posts_per_page: 20 # defaults to 5
 ```
 
 ## Note

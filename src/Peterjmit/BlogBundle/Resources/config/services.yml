@@ -18,7 +18,7 @@ services:
 
     peterjmit_blog.paged_post_repository:
         class: %peterjmit_blog.paged_post_repository.class%
-        arguments: [@peterjmit_blog.post_repository]
+        arguments: [@peterjmit_blog.post_repository, %peterjmit_blog.posts_per_page%]
 
     peterjmit_blog.post_manager:
         class: %peterjmit_blog.post_manager.class%

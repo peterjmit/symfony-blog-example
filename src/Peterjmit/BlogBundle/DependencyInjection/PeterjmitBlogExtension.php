@@ -28,5 +28,6 @@ class PeterjmitBlogExtension extends Extension
 
         $container->setParameter('peterjmit_blog.name', $config['name']);
         $container->setParameter('peterjmit_blog.title', $config['title']);
+        $container->setParameter('peterjmit_blog.posts_per_page', $config['posts_per_page']);
     }
 }
