@@ -43,7 +43,7 @@ $ bin/behat
 $ bin/phpspec run
 ```
 
-Or use the app <33.33.33.10>.
+Or just use the app <http://33.33.33.10>
 
 I would usually HTML5 validation on, but I have turned it off to show the Symfony
 validation framework in action.
