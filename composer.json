@@ -21,6 +21,7 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "stof/doctrine-extensions-bundle": "~1.1",
         "doctrine/doctrine-migrations-bundle": "dev-master",
+        "doctrine/doctrine-fixtures-bundle": "dev-master",
         "ircmaxell/password-compat": "~1.0"
     },
     "require-dev": {

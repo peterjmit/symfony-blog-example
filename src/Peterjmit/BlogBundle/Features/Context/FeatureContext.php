@@ -11,6 +11,9 @@ use Behat\Behat\Context\Step;
 
 use Nelmio\Alice\Fixtures;
 
+use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
+use Doctrine\Common\DataFixtures\Purger\ORMPurger;
+
 /**
  * Feature context.
  */
@@ -50,7 +53,15 @@ class FeatureContext extends BehatContext
      */
     public function someBlogPostsHaveBeenWritten()
     {
-        $om = $this->getKernel()->getContainer()->get('doctrine')->getManager();
-        $objects = Fixtures::load(__DIR__ . '/../fixtures.yml', $om);
+        $manager = $this->getContainer()->get('doctrine')->getManager();
+        $purger = new ORMPurger($manager);
+        $purger->setPurgeMode(ORMPurger::PURGE_MODE_TRUNCATE);
+
+        $executor = new ORMExecutor($manager, $purger);
+        $executor->purge();
+
+        Fixtures::load(__DIR__ . '/../fixtures.yml', $manager);
+
+        $manager->clear();
     }
 }
