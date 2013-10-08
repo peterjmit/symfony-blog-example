@@ -42,6 +42,13 @@ class PostController
         return $this->utils->redirect('blog_home');
     }
 
+    public function publishAction($id)
+    {
+        $this->manager->publish($id);
+
+        return $this->utils->redirect('blog_home');
+    }
+
     private function renderCreateForm($form)
     {
         return $this->utils->render('PeterjmitBlogBundle:Blog:create.html.twig', [

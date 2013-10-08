@@ -4,6 +4,7 @@ namespace Peterjmit\BlogBundle\Features\Context;
 
 use Behat\Behat\Context\BehatContext;
 use Behat\Behat\Exception\PendingException;
+use Behat\Mink\Exception\ExpectationException;
 
 use Behat\Symfony2Extension\Context\KernelDictionary;
 use Behat\MinkExtension\Context\MinkDictionary;
@@ -35,6 +36,27 @@ class FeatureContext extends BehatContext
     }
 
     /**
+     * @Then /^I should see todays date for post (\d+)$/
+     */
+    public function iShouldSeeTodaysDateForPost($postId)
+    {
+        $expectedDate = (new \DateTime('now'))->format('F jS, Y');
+
+        $article = $this->findPostArticleNode($postId);
+        $time = $article->find('css', 'time');
+
+        if ($time && $time->getText() === $expectedDate) {
+            return;
+        }
+
+        throw new ExpectationException(sprintf(
+            'Expected article #%s to have published date %s',
+            $postId,
+            $expectedDate
+        ), $this->getSession());
+    }
+
+    /**
      * @Given /^I have logged in$/
      */
     public function iHaveLoggedIn()
@@ -63,5 +85,17 @@ class FeatureContext extends BehatContext
         Fixtures::load(__DIR__ . '/../fixtures.yml', $manager);
 
         $manager->clear();
+    }
+
+    private function findPostArticleNode($id)
+    {
+        $page = $this->getSession()->getPage();
+        $article = $page->findById(sprintf('peterjmit_post_%s', $id));
+
+        if (!$article) {
+            throw new ExpectationException(sprintf('Could not find article for post #%s', $id), $this->getSession());
+        }
+
+        return $article;
     }
 }

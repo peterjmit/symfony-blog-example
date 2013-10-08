@@ -64,6 +64,14 @@ class PostControllerSpec extends ObjectBehavior
         $this->createAction($request);
     }
 
+    function it_publishes_a_blog_post(PostManager $manager, Post $post, Utils $utils)
+    {
+        $manager->publish(1)->shouldBeCalled();
+        $utils->redirect('blog_home')->willReturn('/');
+
+        $this->publishAction(1)->shouldReturn('/');
+    }
+
     private function assertPostFormRendered(PostManager $manager, Utils $utils, FormInterface $form)
     {
         $this->assertPostFormCreated($manager, $utils, $form);

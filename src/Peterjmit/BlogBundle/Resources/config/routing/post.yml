@@ -6,3 +6,8 @@ peterjmit_blog_create:
     pattern:   /create
     defaults:  { _controller: peterjmit_blog.post_controller:createAction }
     methods: [POST]
+
+peterjmit_post_publish:
+    pattern: /publish/{id}
+    defaults:  { _controller: peterjmit_blog.post_controller:publishAction }
+    methods: [POST]

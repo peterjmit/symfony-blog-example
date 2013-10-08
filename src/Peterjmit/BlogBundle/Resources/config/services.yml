@@ -16,7 +16,7 @@ services:
 
     peterjmit_blog.post_manager:
         class: %peterjmit_blog.post_manager.class%
-        arguments: [@doctrine.orm.entity_manager, %peterjmit_blog.post_entity.class%]
+        arguments: [@doctrine.orm.entity_manager, @peterjmit_blog.blog_repository, %peterjmit_blog.post_entity.class%]
 
     peterjmit_blog.controller_utilities:
         class: %peterjmit_blog.controller_utilities.class%
