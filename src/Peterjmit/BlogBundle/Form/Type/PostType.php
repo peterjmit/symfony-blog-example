@@ -10,7 +10,7 @@ class PostType extends AbstractType
 {
     private $dataClass;
 
-    public function  __construct($dataClass)
+    public function __construct($dataClass)
     {
         $this->dataClass = $dataClass;
     }

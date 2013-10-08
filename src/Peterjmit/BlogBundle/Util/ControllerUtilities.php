@@ -43,5 +43,4 @@ class ControllerUtilities
     {
         return $this->formFactory->create($type, $data, $options);
     }
-
 }
