@@ -3,5 +3,5 @@ Peterjmit\BlogBundle\Entity\Post:
         subject: Awesome blog post 1
         article: Article body
     post2:
-        subject: How-to: write a blog post for apple
+        subject: How-to: write a blog app for apple
         article: Article body

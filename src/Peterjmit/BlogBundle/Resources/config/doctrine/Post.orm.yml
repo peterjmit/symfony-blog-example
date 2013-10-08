@@ -1,5 +1,6 @@
 Peterjmit\BlogBundle\Entity\Post:
     type: entity
+    repositoryClass: Peterjmit\BlogBundle\Doctrine\PostRepository
 
     id:
         id:

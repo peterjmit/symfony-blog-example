@@ -2,13 +2,24 @@
 
 namespace Peterjmit\BlogBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
+use Peterjmit\BlogBundle\Doctrine\PostRepository;
+use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 
-class BlogController extends Controller
+class BlogController
 {
-    public function indexAction(Request $request)
+    private $repository;
+    private $templating;
+
+    public function __construct(PostRepository $repository, EngineInterface $templating)
     {
-        return $this->render('PeterjmitBlogBundle:Blog:index.html.twig');
+        $this->repository = $repository;
+        $this->templating = $templating;
+    }
+
+    public function indexAction()
+    {
+        return $this->templating->renderResponse('PeterjmitBlogBundle:Blog:index.html.twig', [
+            'posts' => $this->repository->findAll()
+        ]);
     }
 }

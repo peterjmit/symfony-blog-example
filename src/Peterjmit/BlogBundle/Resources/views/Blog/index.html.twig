@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-Home!
-
+<ul>
+  {% for post in posts %}
+  <li>#{{ post.id }} - {{ post.subject }}</li>
+  {% endfor %}
+</ul>
 {% endblock %}

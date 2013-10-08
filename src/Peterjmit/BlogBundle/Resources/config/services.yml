@@ -1,7 +1,15 @@
 parameters:
-#    peterjmit_blog.example.class: Peterjmit\BlogBundle\Example
+    peterjmit_blog.post_entity.class: Peterjmit\BlogBundle\Entity\Post
+    peterjmit_blog.post_repository.class: Peterjmit\BlogBundle\Doctrine\PostRepository
+    peterjmit_blog.blog_controller.class: Peterjmit\BlogBundle\Controller\BlogController
 
 services:
-#    peterjmit_blog.example:
-#        class: %peterjmit_blog.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    peterjmit_blog.blog_repository:
+        class: %peterjmit_blog.blog_controller.class%
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments: [%peterjmit_blog.post_entity.class%]
+
+    peterjmit_blog.blog_controller:
+        class: %peterjmit_blog.blog_controller.class%
+        arguments: [@peterjmit_blog.blog_repository, @templating]
