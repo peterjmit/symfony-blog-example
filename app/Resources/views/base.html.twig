@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <title>{% block title %}Welcome!{% endblock %}</title>
-    {% stylesheets
+    {% stylesheets filter='cssrewrite'
       'bower_components/bootstrap/dist/css/bootstrap.css'
-      '@PeterjmitBlogBundle/Resources/public/css/*'
+      'bundles/peterjmitblog/css/*'
     %}
       <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
