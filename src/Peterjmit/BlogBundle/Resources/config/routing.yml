@@ -1,0 +1,6 @@
+_blog_bundle_security:
+    resource: "@PeterjmitBlogBundle/Resources/config/routing/security.yml"
+    prefix:   /
+
+_blog_bundle_reading:
+    resource: "@PeterjmitBlogBundle/Resources/config/routing/reading.yml"
