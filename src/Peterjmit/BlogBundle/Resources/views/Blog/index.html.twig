@@ -9,41 +9,51 @@
   </div>
 </div>
 
-{% for post in posts %}
-<article id="peterjmit_post_1" class="row post">
-  <div class="post--body col-lg-8 col-lg-offset-2">
-    <header>
-      <div class="post--published pull-right">
-        {% if not post.published %}
-        <span class="label label-default">DRAFT</span>
-        {% else %}
-        <time>
-          {{ post.datePublished|date('F jS, Y') }}
-        </time>
+<section id="posts">
+  {% for post in posts %}
+  <article id="peterjmit_post_1" class="row post">
+    <div class="post--body col-lg-8 col-lg-offset-2">
+      <header>
+        <div class="post--published pull-right">
+          {% if not post.published %}
+          <span class="label label-default">DRAFT</span>
+          {% else %}
+          <time>
+            {{ post.datePublished|date('F jS, Y') }}
+          </time>
+          {% endif %}
+        </div>
+        <h2>{{ post.subject }}</h2>
+      </header>
+
+      {% set article_lines = post.article|split('\n') %}
+      <p class="lead">
+        {{ article_lines|first }}
+      </p>
+      {% for paragraph in article_lines|slice(1) %}
+      <p>{{ paragraph }}</p>
+      {% endfor %}
+
+      <footer>
+        {% if is_granted('ROLE_ADMIN') and not post.published %}
+        <form action="{{ path('peterjmit_post_publish', { id: post.id }) }}" method="post" class="pull-right">
+          <button id="peterjmit_post_publish_{{ post.id }}" class="btn btn-primary btn-sm">
+            Publish
+          </button>
+        </form>
         {% endif %}
-      </div>
-      <h2>{{ post.subject }}</h2>
-    </header>
+      </footer>
+    </div>
+  </article>
+  {% endfor %}
+</section>
 
-    {% set article_lines = post.article|split('\n') %}
-    <p class="lead">
-      {{ article_lines|first }}
-    </p>
-    {% for paragraph in article_lines|slice(1) %}
-    <p>{{ paragraph }}</p>
-    {% endfor %}
-
-    <footer>
-      {% if is_granted('ROLE_ADMIN') and not post.published %}
-      <form action="{{ path('peterjmit_post_publish', { id: post.id }) }}" method="post" class="pull-right">
-        <button id="peterjmit_post_publish_{{ post.id }}" class="btn btn-primary btn-sm">
-          Publish
-        </button>
-      </form>
-      {% endif %}
-    </footer>
+{% if posts.haveToPaginate %}
+<section id="pagination" class="row">
+  <div class="col-lg-8 col-lg-offset-2 text-center">
+    {{ pagerfanta(posts) }}
   </div>
-</article>
-{% endfor %}
+</div>
+{% endif %}
 
 {% endblock %}

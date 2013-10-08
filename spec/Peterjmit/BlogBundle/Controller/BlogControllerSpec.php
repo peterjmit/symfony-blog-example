@@ -5,13 +5,15 @@ namespace spec\Peterjmit\BlogBundle\Controller;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
-use Peterjmit\BlogBundle\Doctrine\PostRepository;
+use Peterjmit\BlogBundle\Doctrine\PagedPostRepository;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
+use Pagerfanta\Pagerfanta;
+use Symfony\Component\HttpFoundation\Request;
 
 class BlogControllerSpec extends ObjectBehavior
 {
     function let(
-        PostRepository $repository,
+        PagedPostRepository $repository,
         EngineInterface $templating
     ) {
         $this->beConstructedWith($repository, $templating);
@@ -23,19 +25,21 @@ class BlogControllerSpec extends ObjectBehavior
     }
 
     function it_should_respond_to_index_action(
-        PostRepository $repository,
+        PagedPostRepository $repository,
         EngineInterface $templating
     ) {
-        $repository->findAll()->willReturn(['An array', 'of blog', 'posts!']);
+        $repository->findAll(1)->willReturn(['An array', 'of blog', 'posts!']);
 
         $templating
             ->renderResponse(
                 'PeterjmitBlogBundle:Blog:index.html.twig',
-                ['posts' => ['An array', 'of blog', 'posts!']]
+                [
+                    'posts' => ['An array', 'of blog', 'posts!'],
+                ]
             )
             ->shouldBeCalled()
         ;
 
-        $this->indexAction();
+        $this->indexAction(1);
     }
 }
