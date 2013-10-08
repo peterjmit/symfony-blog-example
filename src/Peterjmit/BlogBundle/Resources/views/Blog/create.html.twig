@@ -1,7 +1,15 @@
 {% extends '@PeterjmitBlog/layout.html.twig' %}
 
 {% block content %}
-{{ form_start(form) }}
-
-{{ form_end(form) }}
+<div class="row">
+  <div class="col-lg-6 col-lg-offset-3">
+    <h1>Create a blog post</h1>
+    <hr>
+    {{ form_start(form, { 'attr': {'novalidate': 'novalidate' }}) }}
+      {{ form_row(form.subject) }}
+      {{ form_row(form.article) }}
+      {{ form_row(form.submit, { 'attr': { 'class': 'btn-lg btn-primary pull-right' }}) }}
+    {{ form_end(form) }}
+  </div>
+</div>
 {% endblock %}

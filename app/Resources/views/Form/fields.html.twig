@@ -1,0 +1,75 @@
+{% extends 'form_div_layout.html.twig' %}
+
+{# Buttons #}
+{% block button_attributes %}
+    {% set attr = attr|merge({class: 'btn ' ~ attr.class | default("")}) %}
+    {{ parent() }}
+{% endblock button_attributes %}
+
+{% block button_widget %}
+{% spaceless %}
+    {% if label is empty %}
+        {% set label = name|humanize %}
+    {% endif %}
+    <button type="{{ type|default('button') }}" {{ block('button_attributes') }}>
+      {{ label|trans({}, translation_domain) }}
+    </button>
+{% endspaceless %}
+{% endblock button_widget %}
+
+{% block textarea_widget %}
+{% set attr = attr|merge({'class': attr.class|default('') ~ ' form-control'}) %}
+{{ parent() }}
+{% endblock textarea_widget %}
+
+{% block form_widget_simple %}
+{% spaceless %}
+  {% set type = type|default('text') %}
+  {% set attr = attr|merge({'class': attr.class|default('') ~ ' form-control'}) %}
+  {{ parent() }}
+{% endspaceless %}
+{% endblock form_widget_simple %}
+
+{% block form_legend %}
+{% spaceless %}
+    {% if label is empty %}
+        {% set label = name|humanize %}
+    {% endif %}
+    <legend>{{ label|trans({}, translation_domain) }}</legend>
+{% endspaceless %}
+{% endblock form_legend %}
+
+{% block form_label %}
+{% spaceless %}
+  {% set label_attr = label_attr|merge({'class': label_attr.class|default('') ~ ' control-label'}) %}
+  {{ parent() }}
+{% endspaceless %}
+{% endblock form_label %}
+
+{% block form_row %}
+{% spaceless %}
+  {% set attr = attr|merge({'class': attr.class|default('') ~ (errors|length > 0 ? ' has-error' : '') }) %}
+  <div class="form-group {{ attr.class }}">
+      {{ form_label(form) }}
+      {{ form_widget(form) }}
+      {{ form_errors(form) }}
+  </div>
+{% endspaceless %}
+{% endblock form_row %}
+
+
+{% block form_errors %}
+{% spaceless %}
+{% if errors|length > 0 %}
+  <span class="help-block">
+  {% for error in errors %}
+      {{
+          error.messagePluralization is null
+              ? error.messageTemplate|trans(error.messageParameters, 'validators')
+              : error.messageTemplate|transchoice(error.messagePluralization, error.messageParameters, 'validators')
+      }} <br>
+  {% endfor %}
+  </span>
+{% endif %}
+{% endspaceless %}
+{% endblock form_errors %}
