@@ -6,6 +6,7 @@ parameters:
     peterjmit_blog.post_controller.class: Peterjmit\BlogBundle\Controller\PostController
     peterjmit_blog.post_manager.class: Peterjmit\BlogBundle\Doctrine\PostManager
     peterjmit_blog.controller_utilities.class: Peterjmit\BlogBundle\Util\ControllerUtilities
+    peterjmit_blog.twig.blog_configuration.class: Peterjmit\BlogBundle\Twig\Extension\BlogConfiguration
 
 services:
     peterjmit_blog.blog_repository:
@@ -35,3 +36,9 @@ services:
     peterjmit_blog.post_controller:
         class: %peterjmit_blog.post_controller.class%
         arguments: [@peterjmit_blog.post_manager, @peterjmit_blog.controller_utilities]
+
+    peterjmit_blog.twig.blog_configuration:
+        class: %peterjmit_blog.twig.blog_configuration.class%
+        arguments: [@service_container]
+        tags:
+            - { name: twig.extension }

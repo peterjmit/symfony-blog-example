@@ -18,3 +18,7 @@ doctrine:
 
 swiftmailer:
     disable_delivery: true
+
+peterjmit_blog:
+    name: "Test name"
+    title: "Test blog title"

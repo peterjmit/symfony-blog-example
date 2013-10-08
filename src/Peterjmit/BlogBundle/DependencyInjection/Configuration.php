@@ -20,6 +20,19 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('peterjmit_blog');
 
+        $rootNode
+            ->children()
+                ->scalarNode('name')
+                    ->defaultValue('Apple blog')
+                    ->cannotBeEmpty()
+                ->end()
+                ->scalarNode('title')
+                    ->defaultValue('Welcome to the Apple Blog!')
+                    ->cannotBeEmpty()
+                ->end()
+            ->end()
+        ;
+
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
         // more information on that topic.

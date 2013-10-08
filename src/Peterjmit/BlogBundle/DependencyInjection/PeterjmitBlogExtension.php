@@ -24,5 +24,9 @@ class PeterjmitBlogExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+
+
+        $container->setParameter('peterjmit_blog.name', $config['name']);
+        $container->setParameter('peterjmit_blog.title', $config['title']);
     }
 }
