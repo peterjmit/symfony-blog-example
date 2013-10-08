@@ -13,6 +13,9 @@
         <a class="btn btn-primary btn-small" href="{{ path('peterjmit_blog_new') }}">
           Create post <i class="glyphicon glyphicon-plus"></i>
         </a>
+        {% if app.user %}
+        <a href="{{ path('logout') }}" class="btn btn-danger btn small">Logout</a>
+        {% endif %}
       </div>
     </div><!--/.nav-collapse -->
   </div>
