@@ -51,7 +51,7 @@ validation framework in action.
 Lastly you can configure the blog title and name:
 
 ```yaml
-peterjmit_blog
+peterjmit_blog:
     name: Pete's blog
     title: Welcome to Pete's blog!
 ```
