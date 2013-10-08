@@ -1,0 +1,15 @@
+Peterjmit\BlogBundle\Entity\Post:
+
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: slug
+
+    properties:
+        subject:
+            - NotBlank:
+                message: "please give your post a subject!"
+            - Length:
+                max: 255
+                maxMessage: Your subject cannot be longer than 255 characters
+        article:
+            - NotBlank:
+                message: "please give your post an article!"
