@@ -1,0 +1,12 @@
+.post {
+  margin-bottom: 1.5em;
+}
+
+.post .post--body {
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.post:last-child .post--body {
+  border-bottom: none;
+}

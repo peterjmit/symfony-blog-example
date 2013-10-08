@@ -1,14 +1,30 @@
 {% extends '@PeterjmitBlog/layout.html.twig' %}
 
 {% block content %}
+
 <div class="row">
-  <div class="col-lg-8">
-    <ul>
-      {% for post in posts %}
-      <li>#{{ post.id }} - {{ post.subject }}</li>
-      {% endfor %}
-    </ul>
+  <div class="col-lg-8 col-lg-offset-2">
+    <h1>{{ blog_title|default('Welcome to ' ~ blog_name|default('Blog')) }}!</h1>
+    <hr>
   </div>
 </div>
+
+{% for post in posts %}
+<article class="row post">
+  <div class="post--body col-lg-8 col-lg-offset-2">
+    <header>
+      <h2>{{ post.subject }}</h2>
+    </header>
+
+    {% set article_lines = post.article|split('\n') %}
+    <p class="lead">
+      {{ article_lines|first }}
+    </p>
+    {% for paragraph in article_lines|slice(1) %}
+    <p>{{ paragraph }}</p>
+    {% endfor %}
+  </div>
+</article>
+{% endfor %}
 
 {% endblock %}
