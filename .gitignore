@@ -11,3 +11,4 @@
 /composer.phar
 /vagrant/.vagrant
 /app/SymfonyRequirements.php
+/web/bower_components

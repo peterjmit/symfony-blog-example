@@ -1,0 +1,15 @@
+{
+  "name": "apple-blog",
+  "version": "0.1.0",
+  "description": "Example blog application with Symfony 2 and twitter bootstrap",
+  "main": "web/app.php",
+  "authors": [
+    "Peter Mitchell"
+  ],
+  "license": "MIT",
+  "homepage": "peterjmit.com",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "~3.0.0"
+  }
+}
