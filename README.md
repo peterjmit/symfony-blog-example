@@ -1,5 +1,7 @@
 # Symfony 2 blog app
 
+[![Build Status](https://travis-ci.org/peterjmit/symfony-blog-example.png?branch=master)](https://travis-ci.org/peterjmit/symfony-blog-example)
+
 ## Getting up and running
 
 I have supplied a Vagrant file for setting up a dev environment
