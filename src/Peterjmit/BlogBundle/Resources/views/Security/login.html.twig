@@ -1,17 +1,30 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-{% if error %}
-    <div>{{ error.message }}</div>
-{% endif %}
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 col-lg-offset-4">
+        <form class="form-signin" action="{{ path('login_check') }}" method="post">
+          <h2 class="form-signin-heading">Please sign in</h2>
 
-<form action="{{ path('login_check') }}" method="post">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" />
+          {% if error %}
+          <div class="alert alert-warning">
+            <strong>Oops!</strong> {{ error.message }}
+          </div>
+          {% endif %}
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="_password" />
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input id="username" name="_username" type="text" value="{{ last_username }}" class="form-control" placeholder="Username" autofocus="">
+          </div>
 
-    <button id="login" type="submit">login</button>
-</form>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" name="_password" type="password" class="form-control" placeholder="Password">
+          </div>
+          <button id="login" type="submit" class="btn btn-lg btn-primary btn-block" >Sign in</button>
+        </form>
+    </div>
+  </div>
+</div>
 {% endblock %}

@@ -11,10 +11,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
   </head>
   <body>
-    {% include 'nav.html.twig' %}
-    <div class="container">
-      {% block body %}{% endblock %}
-    </div><!-- /.container -->
+    {% block body %}{% endblock %}
 
     {% javascripts
       'bower_components/jquery/jquery.js'
