@@ -1,6 +1,7 @@
 # Symfony 2 blog app
 
 [![Build Status](https://travis-ci.org/peterjmit/symfony-blog-example.png?branch=master)](https://travis-ci.org/peterjmit/symfony-blog-example)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/fe313a72-b86d-4b71-9c51-3212e90fdee0/mini.png)](https://insight.sensiolabs.com/projects/fe313a72-b86d-4b71-9c51-3212e90fdee0)
 
 ## Getting up and running
 
