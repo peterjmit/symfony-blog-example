@@ -70,12 +70,3 @@ stof_doctrine_extensions:
 white_october_pagerfanta:
     default_view: blog_view
 
-services:
-    pagerfanta.view.blog_view:
-        class: Pagerfanta\View\OptionableView
-        public: false
-        arguments:
-            - @pagerfanta.view.twitter_bootstrap3
-            - { proximity: 2, prev_message: "&laquo;", next_message: "&raquo;" }
-        tags:
-            - { name: pagerfanta.view, alias: blog_view }

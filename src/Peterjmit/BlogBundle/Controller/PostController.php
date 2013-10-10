@@ -5,6 +5,7 @@ namespace Peterjmit\BlogBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Peterjmit\BlogBundle\Doctrine\PostManager;
 use Peterjmit\BlogBundle\Util\ControllerUtilities as Utils;
+use Symfony\Component\Form\FormInterface;
 
 class PostController
 {
@@ -49,7 +50,7 @@ class PostController
         return $this->utils->redirect('blog_home');
     }
 
-    private function renderCreateForm($form)
+    private function renderCreateForm(FormInterface $form)
     {
         return $this->utils->render('PeterjmitBlogBundle:Blog:create.html.twig', [
             'form' => $form->createView()

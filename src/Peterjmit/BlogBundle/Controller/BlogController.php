@@ -4,7 +4,6 @@ namespace Peterjmit\BlogBundle\Controller;
 
 use Peterjmit\BlogBundle\Doctrine\PagedPostRepository;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
-use Symfony\Component\HttpFoundation\Request;
 
 class BlogController
 {
