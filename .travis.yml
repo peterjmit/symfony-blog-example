@@ -3,6 +3,7 @@ language: php
 php:
   - 5.4
   - 5.5
+  - hhvm
   
 services:
     - redis
@@ -19,3 +20,7 @@ before_script:
 script:
     - ./bin/phpspec run -fpretty --verbose
     - ./bin/behat  --no-snippets --no-paths --verbose
+
+matrix:
+    allow_failures:
+          - php: hhvm
